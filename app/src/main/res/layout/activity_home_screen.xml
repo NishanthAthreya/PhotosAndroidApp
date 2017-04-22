@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.pkanukollu.androidphotos05.HomeScreen">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="495dp"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp"></LinearLayout>
+        tools:layout_editor_absoluteY="8dp">
 
     <Button
         android:id="@+id/button9"
@@ -19,35 +19,67 @@
         android:layout_height="wrap_content"
         android:text="Delete"
         tools:layout_editor_absoluteX="280dp"
-        tools:layout_editor_absoluteY="447dp" />
+        tools:layout_editor_absoluteY="447dp"
+        android:layout_marginRight="26dp"
+        android:layout_marginEnd="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="5dp" />
 
-    <Button
+        <Button
         android:id="@+id/button10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rename"
-        tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="447dp" />
+        android:text="Rename Album"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="115dp"
+            android:layout_marginBottom="5dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
-    <Button
-        android:id="@+id/button11"
+        <Button
+            android:id="@+id/button12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View Album"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="20dp"
+            tools:layout_editor_absoluteY="72dp"
+            tools:layout_editor_absoluteX="160dp" />
+
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Album"
+            android:layout_marginBottom="5dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="436dp" />
+
+    <EditText
+        android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Album"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="447dp" />
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter Album Name"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="55dp"
+        tools:layout_editor_absoluteX="65dp"
+        tools:layout_editor_absoluteY="393dp" />
 
     <ListView
-        android:layout_width="373dp"
-        android:layout_height="320dp"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="73dp" />
+    android:id="@+id/albumList"
+    android:layout_width="361dp"
+    android:layout_height="243dp"
+        android:layout_marginTop="120dp"
+    tools:layout_editor_absoluteX="10dp"
+    tools:layout_editor_absoluteY="112dp" />
+</RelativeLayout>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="372dp"
-        android:layout_height="41dp"
-        android:text="Enter Album Name"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="400dp" />
 </android.support.constraint.ConstraintLayout>
