@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Nishanth\.android\build-cache\5906df12934381d2074bf963b0b7e467715378e3\output\jars\classes.jar"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\classes-27dd77b7f722bcca19a54188fc88577a106fadf6.jar" />
+    </item>
+    <item
+        jar="C:\Users\Nishanth\.android\build-cache\c4a6abec3736b75c9751d2c48c1cdbfcabde95f5\output\jars\classes.jar"
+        revision="25.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\classes-6e6c91f23891d6e4d637951777f3ad86da07c5b1.jar" />
+    </item>
+    <item
+        jar="C:\Users\Nishanth\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        revision="25.0.2"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\support-annotations-25.3.1-492eed774ed711aa2330befd0e7fe91156add55e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Nishanth\.android\build-cache\ebd74f1402c05e7f90fd4bb8d6c92ca28973c6b3\output\jars\classes.jar"
+        revision="25.0.2"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\classes-01c6fa5ae8276aed858acc2354b296cc9eadf79f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Nishanth\.android\build-cache\c9ec2b0ab805514e0bd6689770105cf74333b920\output\jars\classes.jar"
+        revision="25.0.2"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\classes-fc22386b049194de71152c990979549c5dded17f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Nishanth\.android\build-cache\2d607b9799ada2efd3a7547df2e073b502b94600\output\jars\classes.jar"
+        revision="25.0.2"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\classes-0768a7fcfc78292aa4536bad39e579b5473e49e6.jar" />
+    </item>
+    <item
+        jar="C:\Users\Nishanth\.android\build-cache\a012611d731aad67968f7b61db5cb0c15e2d449d\output\jars\classes.jar"
+        revision="25.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\classes-27f2da355031d12f2e19214045fc2873000496bf.jar" />
+    </item>
+    <item
+        jar="C:\Users\Nishanth\.android\build-cache\00374889430c18e948d14abc17dbdf9e43a66399\output\jars\classes.jar"
+        revision="25.0.2"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\classes-101e65c41d2f47d31678e76d66548c59af57df72.jar" />
+    </item>
+    <item
+        jar="C:\Users\Nishanth\AppData\Local\Android\Sdk\platforms\android-25\android.jar"
+        revision="25.0.2"
+        sha1="712a0312fe844a21a1b3812fa960c363a1578984">
+        <dex dex="C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\build\intermediates\transforms\preJackRuntimeLibraries\debug\jars\8000\40\android-10fe2665c9229492b854d45dadf98ce624163a5b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Nishanth\.android\build-cache\7adae4b340761f4ac16a96e17cc71d3a56ff0e98\output\jars\classes.jar"
+        revision="25.0.2"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\classes-79018799182bea88de31f3ec218e1fe349f6e39a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Nishanth\.android\build-cache\20ba7b986bb05ed4943b21e2c9200005e4f19259\output\jars\classes.jar"
+        revision="25.0.2"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\classes-ac7c901ee8716cbff394a2d5f2a76eae4e35061b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Nishanth\.android\build-cache\d34c4b5ae8a17b53d6f03a6ee240a26c57f5a031\output\jars\classes.jar"
+        revision="25.0.2"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\classes-ee6597046f65799ed0aa0315d83977af2c9791af.jar" />
+    </item>
+    <item
+        jar="C:\Users\Nishanth\AppData\Local\Android\Sdk\platforms\android-25\optional\org.apache.http.legacy.jar"
+        revision="25.0.2"
+        sha1="5f0541a4298daa0590b22cfbde43f85e2a675545">
+        <dex dex="C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\build\intermediates\transforms\preJackRuntimeLibraries\debug\jars\8000\40\org.apache.http.legacy-0e0f1230352d9a92337c7f7df3f151e9f30bb10c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Nishanth\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        revision="25.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\build\intermediates\transforms\preJackPackagedLibraries\debug\jars\8000\1f\constraint-layout-solver-1.0.2-1168a23a48a35b6de34ba218491d69470c2febcd.jar" />
+    </item>
+
+</items>

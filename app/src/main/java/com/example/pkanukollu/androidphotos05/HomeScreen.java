@@ -1,6 +1,7 @@
 package com.example.pkanukollu.androidphotos05;
 
 import android.content.Intent;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +21,8 @@ public class HomeScreen extends AppCompatActivity {
     Button view;
     EditText albumname;
     ListView albumsList;
-    ArrayList<String> albums = new ArrayList<String>();
+    //ArrayList<String> albums = new ArrayList<String>();
+    UserAlbum u = new UserAlbum();
     ArrayAdapter<String> adapter;
     private String selected;
     public static final String selected_item = "selected album";
@@ -39,15 +41,25 @@ public class HomeScreen extends AppCompatActivity {
         create.setOnClickListener(e -> {
 
             String album = albumname.getText().toString();
-            albums.add(album);
-            adapter = new ArrayAdapter<String>(this,R.layout.activity_home_screen,albums);
-            albumsList.setAdapter(adapter);
+            //albums.add(album);
+            if(!(u.getAlbumMap().containsKey(album))){
+                u.addAlbum(album);
+                adapter = new ArrayAdapter<String>(this, R.layout.albums, u.getAlbums());
+                /*ArrayAdapter<String> adapter =
+                        new ArrayAdapter<String>(this,
+                                R.layout.activity_home_screen,
+                                u.getAlbums());*/
+                albumsList.setAdapter(adapter);
+            }else{
+                Toast.makeText(HomeScreen.this, "Album already exists!", Toast.LENGTH_SHORT).show();
+            }
         } );
 
         delete.setOnClickListener(e -> {
             String album = albumname.getText().toString();
-            albums.remove(album);
-            adapter = new ArrayAdapter<String>(this,R.layout.activity_home_screen,albums);
+            //albums.remove(album);
+            u.deleteAlbum(album);
+            adapter = new ArrayAdapter<String>(this,R.layout.albums, u.getAlbums());
             albumsList.setAdapter(adapter);
         });
         albumsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {       //getting selected album
