@@ -4,6 +4,8 @@ package com.example.pkanukollu.androidphotos05;
  * Created by pkanukollu on 4/25/2017.
  */
 
+import android.net.Uri;
+
 import java.io.File;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -63,13 +65,13 @@ public class UserAlbum implements Serializable{
      * @param album String variable
      * @param pic String variable
      */
-    public void addPic(String album, String pic, String name){
-        long lastModif = new File(pic).lastModified();
+    public void addPic(String album, Uri pic, String name){
+        long lastModif = new File(pic.getPath()).lastModified();
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         String modif = sdf.format(lastModif);
         //Picture p = new Picture(pic, "");
 
-        Picture picture = new Picture(pic, "");
+        Picture picture = new Picture(pic.toString(), "");
         picture.setDateAndTime(modif);
         picture.calendar(modif);
         picture.setName(name);
@@ -113,9 +115,9 @@ public class UserAlbum implements Serializable{
      * @param album String variable
      * @param pic String variable
      */
-    public void deletePic(String album, String pic){
+    public void deletePic(String album, Uri pic){
         if(albums.containsKey(album)){
-            albums.remove(new Picture(pic, ""));
+            albums.remove(new Picture(pic.toString(), ""));
         }
         /*if(albums.containsKey(user)){
             if(albums.get(user).containsKey(album) && albums.get(user).get(album) != null){
@@ -160,5 +162,15 @@ public class UserAlbum implements Serializable{
             }
         }*/
         return null;
+    }
+    public ArrayList<Uri> getUris(String album){
+        ArrayList<Uri> uris = new ArrayList<Uri>();
+        if(albums.containsKey(album)){
+            for(int i = 0;i < albums.get(album).size();i++){
+                Picture p = albums.get(album).get(i);
+                uris.add(p.getPath());
+            }
+        }
+        return uris;
     }
 }

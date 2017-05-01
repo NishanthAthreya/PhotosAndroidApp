@@ -1,9 +1,5 @@
 [
     {
-        "merged": "C:\\Users\\pkanukollu\\AndroidStudioProjects\\AndroidPhotos05\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action_tombstone.xml",
-        "source": "C:\\Users\\pkanukollu\\.android\\build-cache\\2b8fc21c15bd8de4938a913f6b0371289566f268\\output\\res\\layout-v21\\notification_action_tombstone.xml"
-    },
-    {
         "merged": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_custom_big.xml",
         "source": "C:\\Users\\Nishanth\\.android\\build-cache\\c9ec2b0ab805514e0bd6689770105cf74333b920\\output\\res\\layout-v21\\notification_template_custom_big.xml"
     },
@@ -14,18 +10,6 @@
     {
         "merged": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action.xml",
         "source": "C:\\Users\\Nishanth\\.android\\build-cache\\c9ec2b0ab805514e0bd6689770105cf74333b920\\output\\res\\layout-v21\\notification_action.xml"
-    },
-    {
-        "merged": "C:\\Users\\pkanukollu\\AndroidStudioProjects\\AndroidPhotos05\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_icon_group.xml",
-        "source": "C:\\Users\\pkanukollu\\.android\\build-cache\\2b8fc21c15bd8de4938a913f6b0371289566f268\\output\\res\\layout-v21\\notification_template_icon_group.xml"
-    },
-    {
-        "merged": "C:\\Users\\pkanukollu\\AndroidStudioProjects\\AndroidPhotos05\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action.xml",
-        "source": "C:\\Users\\pkanukollu\\.android\\build-cache\\2b8fc21c15bd8de4938a913f6b0371289566f268\\output\\res\\layout-v21\\notification_action.xml"
-    },
-    {
-        "merged": "C:\\Users\\pkanukollu\\AndroidStudioProjects\\AndroidPhotos05\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_custom_big.xml",
-        "source": "C:\\Users\\pkanukollu\\.android\\build-cache\\2b8fc21c15bd8de4938a913f6b0371289566f268\\output\\res\\layout-v21\\notification_template_custom_big.xml"
     },
     {
         "merged": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_icon_group.xml",

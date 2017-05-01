@@ -3,7 +3,7 @@
     package="com.example.pkanukollu.androidphotos05.test" >
 
     <uses-sdk
-        android:minSdkVersion="15"
+        android:minSdkVersion="19"
         android:targetSdkVersion="24" />
 
     <instrumentation

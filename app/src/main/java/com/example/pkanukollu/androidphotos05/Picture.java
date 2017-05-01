@@ -4,6 +4,8 @@ package com.example.pkanukollu.androidphotos05;
  * Created by pkanukollu on 4/25/2017.
  */
 
+import android.net.Uri;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,7 +40,6 @@ public class Picture implements Serializable {
 
         this.path = path;
         this.caption = caption;
-
     }
     /**
      * This method sets the name of the picture to a new name.
@@ -72,10 +73,10 @@ public class Picture implements Serializable {
      * This method returns the path of the picture.
      * @return String
      */
-    public String getPath()
+    public Uri getPath()
     {
 
-        return path;
+        return Uri.parse(path);
     }
     /**
      * This method returns the caption of the picture.

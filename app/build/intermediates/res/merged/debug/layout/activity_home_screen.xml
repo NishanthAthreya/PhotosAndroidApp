@@ -77,9 +77,13 @@
     android:id="@+id/albumList"
     android:layout_width="361dp"
     android:layout_height="243dp"
+        android:background="?android:attr/activatedBackgroundIndicator"
         android:layout_marginTop="120dp"
     tools:layout_editor_absoluteX="10dp"
-    tools:layout_editor_absoluteY="112dp" />
+    tools:layout_editor_absoluteY="112dp"
+    android:choiceMode="singleChoice"
+    android:state_enabled="true" android:state_selected="true" android:listSelector="@color/colorPrimaryDark"
+        />
 </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

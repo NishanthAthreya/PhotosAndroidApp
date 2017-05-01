@@ -1,18 +1,10 @@
 [
     {
-        "merged": "C:\\Users\\pkanukollu\\AndroidStudioProjects\\AndroidPhotos05\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\ic_launcher_round.png",
-        "source": "C:\\Users\\pkanukollu\\AndroidStudioProjects\\AndroidPhotos05\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
-    },
-    {
         "merged": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\ic_launcher.png",
         "source": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\ic_launcher_round.png",
         "source": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
-    },
-    {
-        "merged": "C:\\Users\\pkanukollu\\AndroidStudioProjects\\AndroidPhotos05\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\ic_launcher.png",
-        "source": "C:\\Users\\pkanukollu\\AndroidStudioProjects\\AndroidPhotos05\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     }
 ]
