@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:2:1-24:12
+ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:2:1-26:12
 	package
 		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:3:5-53
 		INJECTED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml
@@ -13,8 +13,16 @@ ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\
 	android:versionCode
 		INJECTED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:4:5-80
+	android:name
+		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:4:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:5:5-79
+	android:name
+		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:5:22-77
 application
-ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:5:5-22:19
+ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:6:5-24:19
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Nishanth\.android\build-cache\c9ec2b0ab805514e0bd6689770105cf74333b920\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-v4:25.3.1] C:\Users\Nishanth\.android\build-cache\5906df12934381d2074bf963b0b7e467715378e3\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\Nishanth\.android\build-cache\c4a6abec3736b75c9751d2c48c1cdbfcabde95f5\output\AndroidManifest.xml:29:5-20
@@ -26,35 +34,35 @@ MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\Nishan
 MERGED from [com.android.support:support-compat:25.3.1] C:\Users\Nishanth\.android\build-cache\7adae4b340761f4ac16a96e17cc71d3a56ff0e98\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Nishanth\.android\build-cache\a012611d731aad67968f7b61db5cb0c15e2d449d\output\AndroidManifest.xml:9:5-20
 	android:label
-		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:8:9-41
+		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:9:9-41
 	android:supportsRtl
-		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:10:9-35
+		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:11:9-35
 	android:roundIcon
-		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:9:9-54
+		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:10:9-54
 	android:allowBackup
-		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:6:9-35
+		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:7:9-35
 	android:icon
-		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:7:9-43
+		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:8:9-43
 	android:theme
-		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:11:9-40
+		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:12:9-40
 activity#com.example.pkanukollu.androidphotos05.HomeScreen
-ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:12:9-18:20
+ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:13:9-19:20
 	android:name
-		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:12:19-45
+		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:13:19-45
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:13:13-17:29
+ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:14:13-18:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:14:17-69
+ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:15:17-69
 	android:name
-		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:14:25-66
+		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:15:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:16:17-77
+ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:17:17-77
 	android:name
-		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:16:27-74
+		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:17:27-74
 activity#com.example.pkanukollu.androidphotos05.InsideAlbumScreen
-ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:19:9-21:20
+ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:20:9-22:20
 	android:name
-		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:19:19-52
+		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:20:19-52
 uses-sdk
 INJECTED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Nishanth\.android\build-cache\c9ec2b0ab805514e0bd6689770105cf74333b920\output\AndroidManifest.xml:21:5-23:78

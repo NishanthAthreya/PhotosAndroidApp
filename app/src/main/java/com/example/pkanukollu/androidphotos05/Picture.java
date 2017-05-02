@@ -73,10 +73,10 @@ public class Picture implements Serializable {
      * This method returns the path of the picture.
      * @return String
      */
-    public Uri getPath()
+    public String getPath()
     {
 
-        return Uri.parse(path);
+        return path;
     }
     /**
      * This method returns the caption of the picture.

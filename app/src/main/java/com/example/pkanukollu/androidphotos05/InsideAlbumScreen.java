@@ -1,13 +1,20 @@
 package com.example.pkanukollu.androidphotos05;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,8 +46,10 @@ public class InsideAlbumScreen extends AppCompatActivity {
     private UserAlbum u;
     //private ImageView test;
     private ArrayList<Uri> uris;
+    private ArrayList<String> paths;
     private String album_name;
     int i;
+    int MY_PERMISSIONS_REQUEST_CAMERA;
     final int THUMBSIZE = 64;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +63,30 @@ public class InsideAlbumScreen extends AppCompatActivity {
         if(!u.getAlbumMap().containsKey(album_name)){
             u.addAlbum(album_name);
         }
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+// Should we show an explanation?
+if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                     Manifest.permission.READ_EXTERNAL_STORAGE)){
+
+// Show an explanation to the user *asynchronously* -- don't block
+ // this thread waiting for the user's response! After the user
+// sees the explanation, try again to request the permission.
+
+} else {
+
+ // No explanation needed, we can request the permission.
+
+ ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+MY_PERMISSIONS_REQUEST_CAMERA);
+
+// MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+ // app-defined int constant. The callback method gets the
+ // result of the request.
+ }
+        }
         /*String s = "";
         for(int i = 0;i < u.getAlbums().length;i++){
             s += s + " " + u.getAlbums()[i];
@@ -64,7 +97,8 @@ public class InsideAlbumScreen extends AppCompatActivity {
         images = new ArrayList<ImageView>();
         imgFiles = new ArrayList<File>();
         //uris = new ArrayList<Uri>();
-        uris = u.getUris(album_name);
+        //uris = u.getUris(album_name);
+        paths = u.getPaths(album_name);
         grid.setAdapter(myImgAdapter);
         //adapter = new ArrayAdapter<ImageView>(this, R.layout.activity_inside_album_screen, imgs);
         //grid.setAdapter(adapter);
@@ -82,14 +116,18 @@ public class InsideAlbumScreen extends AppCompatActivity {
             case 0:
                 if(resultCode == RESULT_OK){
                     Uri selectedImage = imageReturnedIntent.getData();
+                    File f = new File(selectedImage.getPath());
+                    String path = f.getAbsolutePath();
                     imageView.setImageURI(selectedImage);
                     images.add(imageView);
                     imgFiles.add(new File(selectedImage.getPath()));
-                    File f = new File(selectedImage.getPath());
+                    //File f = new File(selectedImage.getPath());
                     //uris.add(selectedImage);
+                    myImgAdapter = new ImageAdapter(this);
                     grid.setAdapter(myImgAdapter);
-                    u.addPic(album_name, selectedImage, f.getName());
-                    uris = u.getUris(album_name);
+                    Log.d("path", f.getPath());
+                    u.addPic(album_name, path, f.getName());
+                    paths = u.getPaths(album_name);
                     String s = "";
                     for(int i = 0;i < u.getAlbums().length;i++){
                         s += s + " " + u.getAlbums()[i];
@@ -108,13 +146,19 @@ public class InsideAlbumScreen extends AppCompatActivity {
                 if(resultCode == RESULT_OK)
                 {
                     Uri selectedImage = imageReturnedIntent.getData();
+                    //selectedImage.
+                    File f = new File(getRealPathFromURI(selectedImage));
+                    String path = f.getAbsolutePath();
+                    Log.d("path", getRealPathFromURI(selectedImage));
+                    Log.d("path1", path);
                     imageView.setImageURI(selectedImage);
                     images.add(imageView);
                     imgFiles.add(new File(selectedImage.getPath()));
+                    myImgAdapter = new ImageAdapter(this);
                     grid.setAdapter(myImgAdapter);
-                    File f = new File(selectedImage.getPath());
-                    u.addPic(album_name, selectedImage, f.getName());
-                    uris = u.getUris(album_name);
+                    //File f = new File(selectedImage.getPath());
+                    u.addPic(album_name,path , f.getName());
+                    paths = u.getPaths(album_name);
                     String s = "";
                     for(int i = 0;i < u.getAlbums().length;i++){
                         s += s + " " + u.getAlbums()[i];
@@ -137,6 +181,17 @@ public class InsideAlbumScreen extends AppCompatActivity {
                 break;
         }
     }
+
+    private String getRealPathFromURI(Uri contentUri) {
+        String[] proj = { MediaStore.Images.Media.DATA };
+        CursorLoader loader = new CursorLoader(this, contentUri, proj, null, null, null);
+        Cursor cursor = loader.loadInBackground();
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String result = cursor.getString(column_index);
+        cursor.close();
+        return result;
+    }
     public class ImageAdapter extends BaseAdapter {
         private Context mContext;
 
@@ -146,7 +201,7 @@ public class InsideAlbumScreen extends AppCompatActivity {
 
         public int getCount() {
             //return mThumbIds.length;
-            return uris.size();
+            return paths.size();
         }
 
         public Object getItem(int position) {
@@ -174,7 +229,16 @@ public class InsideAlbumScreen extends AppCompatActivity {
             //imageView.setImageBitmap(myBitmap);
             //imageView.setImageResource(mThumbIds[position]);
             //imageView.setImageResource(images.get(position).getDrawable().getAlpha());
-            imageView.setImageURI(uris.get(position));
+            //imageView.setImageURI(uris.get(position));
+            Log.d("myTag", position + " " + paths.get(position));
+            //File f = new File(paths.get(position));
+            //if(f.exists()) {
+                //Bitmap myBitmap = BitmapFactory.decodeFile("/storage/emulated/0/DCIM/Camera/IMG_20170501_130704.jpg");
+            Bitmap myBitmap = BitmapFactory.decodeFile(paths.get(position));
+            if(myBitmap == null)
+                    Log.d("is", "yes");
+                imageView.setImageBitmap(myBitmap);
+            //}
             return imageView;
         }
 
@@ -201,7 +265,7 @@ public class InsideAlbumScreen extends AppCompatActivity {
     }
     public void saveUserAlbum(UserAlbum userAlbum){
         try{
-            FileOutputStream fos = this.openFileOutput("thealbum.bin", Context.MODE_PRIVATE);
+            FileOutputStream fos = this.openFileOutput("savedalbums.bin", Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             /*FileOutputStream fos = this.openFileOutput("thealbum.bin", Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(fos));*/
@@ -215,7 +279,7 @@ public class InsideAlbumScreen extends AppCompatActivity {
     }
     public UserAlbum openUserAlbum(){
         try{
-            FileInputStream fis = this.openFileInput("thealbum.bin");
+            FileInputStream fis = this.openFileInput("savedalbums.bin");
             ObjectInputStream ois = new ObjectInputStream(fis);
             /*FileInputStream fis = this.openFileInput("thealbum.bin");
             ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(fis));*/
@@ -241,7 +305,9 @@ public class InsideAlbumScreen extends AppCompatActivity {
         switch(item.getItemId()){
             case R.id.action_add:
                 Intent pickPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                //Intent pickPhoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(pickPhoto,1);
+                //startActivityForResult(pickPhoto, 0);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

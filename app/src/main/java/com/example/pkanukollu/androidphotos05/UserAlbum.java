@@ -65,13 +65,13 @@ public class UserAlbum implements Serializable{
      * @param album String variable
      * @param pic String variable
      */
-    public void addPic(String album, Uri pic, String name){
-        long lastModif = new File(pic.getPath()).lastModified();
+    public void addPic(String album, String pic, String name){
+        long lastModif = new File(pic).lastModified();
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         String modif = sdf.format(lastModif);
         //Picture p = new Picture(pic, "");
 
-        Picture picture = new Picture(pic.toString(), "");
+        Picture picture = new Picture(pic, "");
         picture.setDateAndTime(modif);
         picture.calendar(modif);
         picture.setName(name);
@@ -163,7 +163,17 @@ public class UserAlbum implements Serializable{
         }*/
         return null;
     }
-    public ArrayList<Uri> getUris(String album){
+    public ArrayList<String> getPaths(String album){
+        ArrayList<String> paths = new ArrayList<String>();
+        if(albums.containsKey(album)){
+            for(int i = 0;i < albums.get(album).size();i++){
+                Picture p = albums.get(album).get(i);
+                paths.add(p.getPath());
+            }
+        }
+        return paths;
+    }
+    /*public ArrayList<Uri> getUris(String album){
         ArrayList<Uri> uris = new ArrayList<Uri>();
         if(albums.containsKey(album)){
             for(int i = 0;i < albums.get(album).size();i++){
@@ -172,5 +182,5 @@ public class UserAlbum implements Serializable{
             }
         }
         return uris;
-    }
+    }*/
 }
