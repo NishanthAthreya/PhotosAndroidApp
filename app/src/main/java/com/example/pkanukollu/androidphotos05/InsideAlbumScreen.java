@@ -42,12 +42,14 @@ public class InsideAlbumScreen extends AppCompatActivity {
     private ArrayList<ImageView> images;
     private ArrayList<File> imgFiles;
     private Integer mThumbIds[];
+    private String selected;
     private ImageAdapter myImgAdapter;
     private UserAlbum u;
     //private ImageView test;
     private ArrayList<Uri> uris;
     private ArrayList<String> paths;
     private String album_name;
+    private int index;
     int i;
     int MY_PERMISSIONS_REQUEST_CAMERA;
     final int THUMBSIZE = 64;
@@ -58,6 +60,7 @@ public class InsideAlbumScreen extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         album_name = b.getString("selected album");
         grid = (GridView)findViewById(R.id.grid);
+        index = -1;
         //test = (ImageView)findViewById(R.id.test);
         u = openUserAlbum();
         if(!u.getAlbumMap().containsKey(album_name)){
@@ -238,7 +241,12 @@ MY_PERMISSIONS_REQUEST_CAMERA);
             if(myBitmap == null)
                     Log.d("is", "yes");
                 imageView.setImageBitmap(myBitmap);
+            imageView.setTag(paths.get(position));
             //}
+            imageView.setOnClickListener(e->{
+                selected = (String)imageView.getTag();
+                Toast.makeText(InsideAlbumScreen.this, selected , Toast.LENGTH_LONG).show();
+            });
             return imageView;
         }
 
@@ -265,7 +273,7 @@ MY_PERMISSIONS_REQUEST_CAMERA);
     }
     public void saveUserAlbum(UserAlbum userAlbum){
         try{
-            FileOutputStream fos = this.openFileOutput("savedalbums.bin", Context.MODE_PRIVATE);
+            FileOutputStream fos = this.openFileOutput("savedalbums1.bin", Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             /*FileOutputStream fos = this.openFileOutput("thealbum.bin", Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(fos));*/
@@ -279,7 +287,7 @@ MY_PERMISSIONS_REQUEST_CAMERA);
     }
     public UserAlbum openUserAlbum(){
         try{
-            FileInputStream fis = this.openFileInput("savedalbums.bin");
+            FileInputStream fis = this.openFileInput("savedalbums1.bin");
             ObjectInputStream ois = new ObjectInputStream(fis);
             /*FileInputStream fis = this.openFileInput("thealbum.bin");
             ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(fis));*/
@@ -308,6 +316,18 @@ MY_PERMISSIONS_REQUEST_CAMERA);
                 //Intent pickPhoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(pickPhoto,1);
                 //startActivityForResult(pickPhoto, 0);
+                return true;
+            case R.id.action_cam:
+                Intent takePic = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(takePic, 0);
+                return true;
+            case R.id.delete:
+                if(selected != null) {
+                    u.deletePic(album_name, selected);
+                    myImgAdapter = new ImageAdapter(this);
+                    grid.setAdapter(myImgAdapter);
+                    saveUserAlbum(u);
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

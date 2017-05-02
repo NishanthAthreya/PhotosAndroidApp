@@ -115,9 +115,9 @@ public class UserAlbum implements Serializable{
      * @param album String variable
      * @param pic String variable
      */
-    public void deletePic(String album, Uri pic){
+    public void deletePic(String album, String pic){
         if(albums.containsKey(album)){
-            albums.remove(new Picture(pic.toString(), ""));
+            albums.get(album).remove(new Picture(pic, ""));
         }
         /*if(albums.containsKey(user)){
             if(albums.get(user).containsKey(album) && albums.get(user).get(album) != null){

@@ -2272,22 +2272,25 @@ containing a value of this type.
         public static final int abc_vector_test=0x7f020052;
         public static final int ic_action_name=0x7f020053;
         public static final int ic_action_plus_white=0x7f020054;
-        public static final int notification_action_background=0x7f020055;
-        public static final int notification_bg=0x7f020056;
-        public static final int notification_bg_low=0x7f020057;
-        public static final int notification_bg_low_normal=0x7f020058;
-        public static final int notification_bg_low_pressed=0x7f020059;
-        public static final int notification_bg_normal=0x7f02005a;
-        public static final int notification_bg_normal_pressed=0x7f02005b;
-        public static final int notification_icon_background=0x7f02005c;
-        public static final int notification_template_icon_bg=0x7f02005f;
-        public static final int notification_template_icon_low_bg=0x7f020060;
-        public static final int notification_tile_bg=0x7f02005d;
-        public static final int notify_panel_notification_icon_bg=0x7f02005e;
+        public static final int ic_delete=0x7f020055;
+        public static final int ic_play=0x7f020056;
+        public static final int ic_remove=0x7f020057;
+        public static final int notification_action_background=0x7f020058;
+        public static final int notification_bg=0x7f020059;
+        public static final int notification_bg_low=0x7f02005a;
+        public static final int notification_bg_low_normal=0x7f02005b;
+        public static final int notification_bg_low_pressed=0x7f02005c;
+        public static final int notification_bg_normal=0x7f02005d;
+        public static final int notification_bg_normal_pressed=0x7f02005e;
+        public static final int notification_icon_background=0x7f02005f;
+        public static final int notification_template_icon_bg=0x7f020062;
+        public static final int notification_template_icon_low_bg=0x7f020063;
+        public static final int notification_tile_bg=0x7f020060;
+        public static final int notify_panel_notification_icon_bg=0x7f020061;
     }
     public static final class id {
         public static final int action0=0x7f0b0068;
-        public static final int action_add=0x7f0b007c;
+        public static final int action_add=0x7f0b007f;
         public static final int action_bar=0x7f0b004f;
         public static final int action_bar_activity_content=0x7f0b0000;
         public static final int action_bar_container=0x7f0b004e;
@@ -2295,6 +2298,7 @@ containing a value of this type.
         public static final int action_bar_spinner=0x7f0b0001;
         public static final int action_bar_subtitle=0x7f0b002d;
         public static final int action_bar_title=0x7f0b002c;
+        public static final int action_cam=0x7f0b007e;
         public static final int action_container=0x7f0b0065;
         public static final int action_context_bar=0x7f0b0050;
         public static final int action_divider=0x7f0b006c;
@@ -2330,6 +2334,7 @@ containing a value of this type.
         public static final int customPanel=0x7f0b003f;
         public static final int decor_content_parent=0x7f0b004d;
         public static final int default_activity_button=0x7f0b0032;
+        public static final int delete=0x7f0b007d;
         public static final int disableHome=0x7f0b0015;
         public static final int editText=0x7f0b0062;
         public static final int edit_query=0x7f0b0051;
@@ -2361,6 +2366,7 @@ containing a value of this type.
         public static final int packed=0x7f0b000c;
         public static final int parent=0x7f0b0009;
         public static final int parentPanel=0x7f0b0038;
+        public static final int play=0x7f0b007c;
         public static final int progress_circular=0x7f0b0005;
         public static final int progress_horizontal=0x7f0b0006;
         public static final int radio=0x7f0b0048;

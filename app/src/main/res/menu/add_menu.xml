@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:appcompat="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/play"
+        android:icon="@drawable/ic_play"
+        android:title="play"
+        appcompat:showAsAction="always" />
+    <item android:id="@+id/delete"
+        android:icon="@drawable/ic_delete"
+        android:title="remove"
+        appcompat:showAsAction="always" />
+    <item android:id="@+id/action_cam"
+        android:icon="@drawable/ic_action_name"
+        android:title="cam"
+        appcompat:showAsAction="always" />
     <item android:id="@+id/action_add"
         android:icon="@drawable/ic_action_plus_white"
         android:title="add"
