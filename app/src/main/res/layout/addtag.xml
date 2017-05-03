@@ -10,6 +10,7 @@
         android:padding="10dp"
         android:text="Enter person below"
         />
+
     <EditText
         android:id="@+id/person"
         android:layout_width="match_parent"
@@ -31,6 +32,14 @@
             android:layout_weight="0.50"
             android:background="@color/colorAccent"
             android:text="Cancel"
+            />
+        <Button
+            android:id="@+id/deletePerson"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.50"
+            android:background="@color/colorAccent"
+            android:text="Remove"
             />
 
         <Button

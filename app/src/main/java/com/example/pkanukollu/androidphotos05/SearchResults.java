@@ -32,7 +32,10 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
-
+/**
+ * Nishanth Athreya nsa48
+ * Pranav Kanukollu, pvk9
+ */
     public class SearchResults extends AppCompatActivity {
         ArrayList<String> searchPaths;
         GridView grid;

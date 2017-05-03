@@ -32,6 +32,14 @@
             android:background="@color/colorAccent"
             android:text="Cancel"
             />
+        <Button
+            android:id="@+id/deleteLoc"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.50"
+            android:background="@color/colorAccent"
+            android:text="Remove"
+            />
 
         <Button
             android:id="@+id/confirmLoc"

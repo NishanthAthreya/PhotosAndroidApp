@@ -33,6 +33,10 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Queue;
 
+/**
+ * Nishanth Athreya nsa48
+ * Pranav Kanukollu, pvk9
+ */
 public class HomeScreen extends AppCompatActivity {
     //Button create;
     //Button delete;
@@ -343,17 +347,18 @@ public class HomeScreen extends AppCompatActivity {
             case R.id.search:
                 final Dialog search = new Dialog(HomeScreen.this);
                 search.setContentView(R.layout.search);
-                search.setTitle("Rename album");
+                search.setTitle("Search album");
                 search.setCancelable(true);
                 search.show();
                 //TextView oldAlbum = (TextView)search.findViewById(R.id.disp) ;
                 //oldAlbum.setText("Old Album Name: " + selected);
                 Button confirmButton = (Button)search.findViewById(R.id.confirmSearch);
+                //Button cancelling = (Button)search.findViewById(R.id.cancelsearch);
                 confirmButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View arg0) {
                         String name = ((EditText)search.findViewById(R.id.personName)).getText().toString().trim().toUpperCase();
-                        String location = ((EditText)search.findViewById(R.id.personName)).getText().toString().trim().toUpperCase();
+                        String location = ((EditText)search.findViewById(R.id.location)).getText().toString().trim().toUpperCase();
                         //String name = p.getText().toString();
                         //Toast.makeText(HomeScreen.this, name, Toast.LENGTH_LONG);
 
@@ -390,9 +395,9 @@ public class HomeScreen extends AppCompatActivity {
                                 ArrayList<Picture> pics = u.getPics(albums[i]);
                                 for (int j = 0; j<pics.size();j++)
                                 {
-                                    if (pics.get(i).getLocation().contains(location))
+                                    if (pics.get(j).getLocation().contains(location))
                                     {
-                                        searchPhotos.add(pics.get(i).getPath());
+                                        searchPhotos.add(pics.get(j).getPath());
                                     }
                                 }
                             }
@@ -406,7 +411,7 @@ public class HomeScreen extends AppCompatActivity {
                         }
                     }
                 });
-                Button cancelBtn = (Button)search.findViewById(R.id.cancel);
+                Button cancelBtn = (Button)search.findViewById(R.id.cancelSearch);
                 cancelBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View arg0) {
@@ -414,7 +419,7 @@ public class HomeScreen extends AppCompatActivity {
                         search.dismiss();
                     }
                 });
-
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

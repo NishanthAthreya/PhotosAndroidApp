@@ -13,7 +13,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
-
+/**
+ * Nishanth Athreya nsa48
+ * Pranav Kanukollu, pvk9
+ */
 public class PhotoDisplay extends AppCompatActivity {
     ArrayList<String> paths;
     String pic;

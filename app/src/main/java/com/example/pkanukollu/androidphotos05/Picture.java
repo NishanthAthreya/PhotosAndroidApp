@@ -83,7 +83,6 @@ public class Picture implements Serializable {
 
     /**
      * gets location
-     * @param location
      */
     public String getLocation()
     {
@@ -101,7 +100,6 @@ public class Picture implements Serializable {
 
     /**
      * Gets person
-     * @param person
      * @return returns person
      */
     public String getPerson()

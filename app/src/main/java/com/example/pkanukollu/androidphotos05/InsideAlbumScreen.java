@@ -39,7 +39,10 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
-
+/**
+ * Nishanth Athreya nsa48
+ * Pranav Kanukollu, pvk9
+ */
 public class InsideAlbumScreen extends AppCompatActivity {
     Button addPhoto;
     GridView grid;
@@ -89,6 +92,10 @@ public class InsideAlbumScreen extends AppCompatActivity {
             if(!theAlbums.contains(s)){
                 u.getAlbumMap().remove(s);
             }
+        }
+        for(int i = 0;i < theAlbums.size();i++){
+            if(!u.getAlbumMap().containsKey(theAlbums.get(i)))
+                u.addAlbum(theAlbums.get(i));
         }
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -411,7 +418,7 @@ MY_PERMISSIONS_REQUEST_CAMERA);
                             for (int i = 0; i < pics.size(); i++) {
                                 Picture p = pics.get(i);
                                 if (p.getPath().equals(selected)) {
-                                    p.setLocation(loc);
+                                    u.getPics(album_name).get(i).setLocation(loc);
                                 }
                             }
                             saveUserAlbum(u);
@@ -447,13 +454,13 @@ MY_PERMISSIONS_REQUEST_CAMERA);
                     saveButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View arg0) {
-                            String person = ((EditText) addperson.findViewById(R.id.loc)).getText().toString().trim();
+                            String person = ((EditText) addperson.findViewById(R.id.person)).getText().toString().trim();
                             //File f = new File(selected);
                             ArrayList<Picture> pics = u.getPics(album_name);
                             for (int i = 0; i < pics.size(); i++) {
                                 Picture p = pics.get(i);
                                 if (p.getPath().equals(selected)) {
-                                    p.setPerson(person);
+                                    u.getPics(album_name).get(i).setPerson(person);
                                 }
                             }
                             saveUserAlbum(u);
@@ -493,8 +500,8 @@ MY_PERMISSIONS_REQUEST_CAMERA);
                             u.addPic(album,selected, "");
                             u.deletePic(album_name,selected);
                             saveUserAlbum(u);
-                            dialog.dismiss();
                         }
+                        dialog.dismiss();
                     }
                 });
 
