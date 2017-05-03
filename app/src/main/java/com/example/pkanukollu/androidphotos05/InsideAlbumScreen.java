@@ -1,6 +1,7 @@
 package com.example.pkanukollu.androidphotos05;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
@@ -19,9 +20,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -34,6 +37,8 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 
 public class InsideAlbumScreen extends AppCompatActivity {
     Button addPhoto;
@@ -52,6 +57,8 @@ public class InsideAlbumScreen extends AppCompatActivity {
     private int index;
     int i;
     int MY_PERMISSIONS_REQUEST_CAMERA;
+    int MY_PERMISSIONS_CAMERA;
+    int MY_PERMISSIONS_REQUEST_WRITE;
     final int THUMBSIZE = 64;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +66,29 @@ public class InsideAlbumScreen extends AppCompatActivity {
         setContentView(R.layout.activity_inside_album_screen);
         Bundle b = getIntent().getExtras();
         album_name = b.getString("selected album");
+        ArrayList<String> theAlbums = b.getStringArrayList("albums");
         grid = (GridView)findViewById(R.id.grid);
         index = -1;
         //test = (ImageView)findViewById(R.id.test);
         u = openUserAlbum();
+        LinkedHashMap<String, String> albumRequests = openRequests();
+        Iterator<String> itr = albumRequests.keySet().iterator();
+        while(itr.hasNext()){
+            String oldAlbum = itr.next();
+            if(u.getAlbumMap().containsKey(oldAlbum)){
+                u.renameAlbum(oldAlbum, albumRequests.get(oldAlbum));
+            }
+            Log.d("album", oldAlbum);
+        }
         if(!u.getAlbumMap().containsKey(album_name)){
             u.addAlbum(album_name);
+        }
+        Iterator<String> itr2 = u.getAlbumMap().keySet().iterator();
+        while(itr.hasNext()){
+            String s = itr.next();
+            if(!theAlbums.contains(s)){
+                u.getAlbumMap().remove(s);
+            }
         }
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -90,6 +114,8 @@ MY_PERMISSIONS_REQUEST_CAMERA);
  // result of the request.
  }
         }
+
+
         /*String s = "";
         for(int i = 0;i < u.getAlbums().length;i++){
             s += s + " " + u.getAlbums()[i];
@@ -119,7 +145,7 @@ MY_PERMISSIONS_REQUEST_CAMERA);
             case 0:
                 if(resultCode == RESULT_OK){
                     Uri selectedImage = imageReturnedIntent.getData();
-                    File f = new File(selectedImage.getPath());
+                    File f = new File(getRealPathFromURI(selectedImage));
                     String path = f.getAbsolutePath();
                     imageView.setImageURI(selectedImage);
                     images.add(imageView);
@@ -247,6 +273,19 @@ MY_PERMISSIONS_REQUEST_CAMERA);
                 selected = (String)imageView.getTag();
                 Toast.makeText(InsideAlbumScreen.this, selected , Toast.LENGTH_LONG).show();
             });
+            /*grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(getApplicationContext(),PhotoDisplay.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putStringArrayList("paths",paths);
+                    // Uri imageSelected = uris.get(position);
+                    selected = paths.get(position);
+                    bundle.putString("path", selected);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+            });*/
             return imageView;
         }
 
@@ -303,6 +342,43 @@ MY_PERMISSIONS_REQUEST_CAMERA);
         }
 
     }
+    public LinkedHashMap<String, String> openRequests(){
+        try{
+            FileInputStream fis = this.openFileInput("waiting.bin");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            /*FileInputStream fis = this.openFileInput("albums.bin");
+            ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(fis));*/
+            Object o = ois.readObject();
+            //Toast.makeText(HomeScreen.this, "useralbum" + o.toString(), Toast.LENGTH_SHORT).show();
+            //ois.close();
+            //fis.close();
+            return (LinkedHashMap<String, String>)o;
+
+        }catch(Exception e) {
+            //Toast.makeText(HomeScreen.this, "useralbum" , Toast.LENGTH_SHORT).show();
+            return new LinkedHashMap<String, String>();
+        }
+
+    }
+
+    public ArrayList<String> openDeleteRequests(){
+        try{
+            FileInputStream fis = this.openFileInput("deletes.bin");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            /*FileInputStream fis = this.openFileInput("albums.bin");
+            ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(fis));*/
+            Object o = ois.readObject();
+            //Toast.makeText(HomeScreen.this, "useralbum" + o.toString(), Toast.LENGTH_SHORT).show();
+            //ois.close();
+            //fis.close();
+            return (ArrayList<String>)o;
+
+        }catch(Exception e) {
+            //Toast.makeText(HomeScreen.this, "useralbum" , Toast.LENGTH_SHORT).show();
+            return new ArrayList<String>();
+        }
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.add_menu, menu);
@@ -317,14 +393,36 @@ MY_PERMISSIONS_REQUEST_CAMERA);
                 startActivityForResult(pickPhoto,1);
                 //startActivityForResult(pickPhoto, 0);
                 return true;
-            case R.id.action_cam:
-                Intent takePic = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(takePic, 0);
+            case R.id.play:
+                Intent intent = new Intent(getApplicationContext(),PhotoDisplay.class);
+                Bundle bundle = new Bundle();
+                bundle.putStringArrayList("paths",paths);
+                bundle.putString("path", selected);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                return true;
+            case R.id.action_cut:
+                final Dialog dialog = new Dialog(InsideAlbumScreen.this);
+                dialog.setContentView(R.layout.move);
+                dialog.setTitle("Move album");
+                dialog.setCancelable(true);
+                dialog.show();
+
+                Button saveButton = (Button)dialog.findViewById(R.id.confirm_move);
+                saveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View arg0) {
+                        String album = ((EditText)dialog.findViewById(R.id.albumTo)).getText().toString().trim().toUpperCase();
+                        //File f = new File(selected);
+                        u.addPic(album,selected, "");
+                        u.deletePic(album_name,selected);
+                    }
+                });
                 return true;
             case R.id.delete:
                 if(selected != null) {
                     u.deletePic(album_name, selected);
-                    myImgAdapter = new ImageAdapter(this);
+                    //myImgAdapter = new ImageAdapter(this);
                     grid.setAdapter(myImgAdapter);
                     saveUserAlbum(u);
                 }

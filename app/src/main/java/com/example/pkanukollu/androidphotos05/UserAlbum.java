@@ -60,6 +60,11 @@ public class UserAlbum implements Serializable{
                 //albums.get(user).put(album_name, new ArrayList<String>());
                 albums.get(user).put(album_name, new ArrayList<Picture>());*/
     }
+    public void renameAlbum(String oldAlbum, String newAlbum){
+        ArrayList<Picture> pics = albums.get(oldAlbum);
+        albums.put(newAlbum, pics);
+        albums.remove(oldAlbum);
+    }
     /**
      * This method is used to add a photo to the data structure.
      * @param album String variable

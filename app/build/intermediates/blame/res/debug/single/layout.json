@@ -76,6 +76,10 @@
         "source": "C:\\Users\\Nishanth\\.android\\build-cache\\c9ec2b0ab805514e0bd6689770105cf74333b920\\output\\res\\layout\\select_dialog_item_material.xml"
     },
     {
+        "merged": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\build\\intermediates\\res\\merged\\debug\\layout\\create.xml",
+        "source": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\src\\main\\res\\layout\\create.xml"
+    },
+    {
         "merged": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
         "source": "C:\\Users\\Nishanth\\.android\\build-cache\\c9ec2b0ab805514e0bd6689770105cf74333b920\\output\\res\\layout\\abc_popup_menu_item_layout.xml"
     },
@@ -96,12 +100,20 @@
         "source": "C:\\Users\\Nishanth\\.android\\build-cache\\c9ec2b0ab805514e0bd6689770105cf74333b920\\output\\res\\layout\\abc_action_menu_item_layout.xml"
     },
     {
+        "merged": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\build\\intermediates\\res\\merged\\debug\\layout\\rename.xml",
+        "source": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\src\\main\\res\\layout\\rename.xml"
+    },
+    {
         "merged": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
         "source": "C:\\Users\\Nishanth\\.android\\build-cache\\c9ec2b0ab805514e0bd6689770105cf74333b920\\output\\res\\layout\\notification_action.xml"
     },
     {
         "merged": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\build\\intermediates\\res\\merged\\debug\\layout\\albums.xml",
         "source": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\src\\main\\res\\layout\\albums.xml"
+    },
+    {
+        "merged": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\build\\intermediates\\res\\merged\\debug\\layout\\move.xml",
+        "source": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\src\\main\\res\\layout\\move.xml"
     },
     {
         "merged": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
@@ -130,6 +142,10 @@
     {
         "merged": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
         "source": "C:\\Users\\Nishanth\\.android\\build-cache\\c9ec2b0ab805514e0bd6689770105cf74333b920\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_photo_display.xml",
+        "source": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\src\\main\\res\\layout\\activity_photo_display.xml"
     },
     {
         "merged": "C:\\Users\\Nishanth\\AndroidStudioProjects\\androidphotos05\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",

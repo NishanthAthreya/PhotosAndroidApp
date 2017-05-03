@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:appcompat="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/play"
-        android:icon="@drawable/ic_play"
-        android:title="play"
-        appcompat:showAsAction="always" />
-    <item android:id="@+id/delete"
+    <item android:id="@+id/removeAlbum"
         android:icon="@drawable/ic_delete"
         android:title="remove"
         appcompat:showAsAction="always" />
-    <item android:id="@+id/action_cut"
-        android:icon="@drawable/ic_action_cut"
-        android:title="cut"
+    <item android:id="@+id/editAlbum"
+        android:icon="@drawable/ic_action_edit"
+        android:title="edit"
         appcompat:showAsAction="always" />
-    <item android:id="@+id/action_add"
+    <item android:id="@+id/addAlbum"
         android:icon="@drawable/ic_action_plus_white"
         android:title="add"
         appcompat:showAsAction="always" />

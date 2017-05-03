@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AndroidPhotos05</string>
+    <string name="enter_album">Enter Album name</string>
 </resources>
