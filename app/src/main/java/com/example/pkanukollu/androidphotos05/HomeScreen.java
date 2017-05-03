@@ -11,6 +11,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +31,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Queue;
 
@@ -64,9 +66,26 @@ public class HomeScreen extends AppCompatActivity {
         view = (Button)findViewById(R.id.button12);
         albumsList = (ListView)findViewById(R.id.albumList);
         renameRequests = openRequests();
-       // useralbums = new ArrayList<String>();
+        u = openUserAlbum();
+        useralbums = openAlbums();
+        /*Bundle b = getIntent().getExtras();
         useralbums = openAlbums();
         u = openUserAlbum();
+        if(b.containsKey("useralbum")) {
+            Bundle bundle = new Bundle();
+            bundle.putString("get", "get");
+            bundle.p
+            Intent intent = new Intent(this, InsideAlbumScreen.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }else{
+            u = b
+        }*/
+        Iterator<String> itr= u.getAlbumMap().keySet().iterator();
+        while(itr.hasNext()){
+            String s = itr.next();
+            Log.d("ualbum", s);
+        }
         //useralbums.add("thing");
         //u = openUserAlbum();
         String s[] = {"thing1", "thing2"};
@@ -373,9 +392,9 @@ public class HomeScreen extends AppCompatActivity {
                                 ArrayList<Picture> pics = u.getPics(albums[i]);
                                 for (int j = 0; j<pics.size();j++)
                                 {
-                                    if (pics.get(i).getPerson().contains(name))
+                                    if (pics.get(j).getPerson() != null && pics.get(j).getPerson().toLowerCase().contains(name.toLowerCase()))
                                     {
-                                        searchPhotos.add(pics.get(i).getPath());
+                                        searchPhotos.add(pics.get(j).getPath());
                                     }
                                 }
                             }
@@ -386,7 +405,7 @@ public class HomeScreen extends AppCompatActivity {
                             intent.putExtras(bundle);
                             startActivity(intent);
                         }
-                        else if (!(location.equals("Enter Location to Search"))) //searching by location
+                        if (!(location.equals("Enter Location to Search"))) //searching by location
                         {
                             //Toast.makeText(HomeScreen.this, "Location", Toast.LENGTH_LONG);
                             String[] albums = u.getAlbums();
@@ -395,7 +414,7 @@ public class HomeScreen extends AppCompatActivity {
                                 ArrayList<Picture> pics = u.getPics(albums[i]);
                                 for (int j = 0; j<pics.size();j++)
                                 {
-                                    if (pics.get(j).getLocation().contains(location))
+                                    if (pics.get(j).getLocation() != null && pics.get(j).getLocation().toLowerCase().contains(location.toLowerCase()))
                                     {
                                         searchPhotos.add(pics.get(j).getPath());
                                     }
@@ -426,7 +445,7 @@ public class HomeScreen extends AppCompatActivity {
     }
     public UserAlbum openUserAlbum(){
         try{
-            FileInputStream fis = this.openFileInput("savedalbums.bin");
+            FileInputStream fis = this.openFileInput("newalbums.bin");
             ObjectInputStream ois = new ObjectInputStream(fis);
             /*FileInputStream fis = this.openFileInput("thealbum.bin");
             ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(fis));*/

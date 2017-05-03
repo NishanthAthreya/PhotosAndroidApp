@@ -9,6 +9,10 @@
         android:icon="@drawable/ic_action_addperson"
         android:title="person"
         appcompat:showAsAction="always" />
+    <item android:id="@+id/viewTag"
+        android:icon="@drawable/ic_action_edit"
+        android:title="viewtag"
+        appcompat:showAsAction="always" />
     <item android:id="@+id/play"
         android:icon="@drawable/ic_play"
         android:title="play"
@@ -24,5 +28,9 @@
     <item android:id="@+id/action_add"
         android:icon="@drawable/ic_action_plus_white"
         android:title="add"
+        appcompat:showAsAction="always" />
+    <item android:id="@+id/searchfor"
+        android:icon="@drawable/ic_action_name"
+        android:title="search"
         appcompat:showAsAction="always" />
 </menu>

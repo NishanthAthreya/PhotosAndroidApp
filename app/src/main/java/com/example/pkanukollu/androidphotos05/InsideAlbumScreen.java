@@ -46,6 +46,7 @@ import java.util.LinkedHashMap;
 public class InsideAlbumScreen extends AppCompatActivity {
     Button addPhoto;
     GridView grid;
+    ArrayList<String> searchPhotos = new ArrayList<String>();
     ArrayAdapter<ImageView> adapter;
     private ArrayList<ImageView> images;
     private ArrayList<File> imgFiles;
@@ -139,6 +140,8 @@ MY_PERMISSIONS_REQUEST_CAMERA);
         //adapter = new ArrayAdapter<ImageView>(this, R.layout.activity_inside_album_screen, imgs);
         //grid.setAdapter(adapter);
         i = 0;
+        albumRequests = new LinkedHashMap<String, String>();
+        saveQueue(albumRequests);
         /*addPhoto = (Button) findViewById(R.id.button);
         addPhoto.setOnClickListener(e -> {
             Intent pickPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -319,7 +322,7 @@ MY_PERMISSIONS_REQUEST_CAMERA);
     }
     public void saveUserAlbum(UserAlbum userAlbum){
         try{
-            FileOutputStream fos = this.openFileOutput("savedalbums1.bin", Context.MODE_PRIVATE);
+            FileOutputStream fos = this.openFileOutput("newalbums.bin", Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             /*FileOutputStream fos = this.openFileOutput("thealbum.bin", Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(fos));*/
@@ -333,7 +336,7 @@ MY_PERMISSIONS_REQUEST_CAMERA);
     }
     public UserAlbum openUserAlbum(){
         try{
-            FileInputStream fis = this.openFileInput("savedalbums1.bin");
+            FileInputStream fis = this.openFileInput("newalbums.bin");
             ObjectInputStream ois = new ObjectInputStream(fis);
             /*FileInputStream fis = this.openFileInput("thealbum.bin");
             ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(fis));*/
@@ -368,6 +371,22 @@ MY_PERMISSIONS_REQUEST_CAMERA);
 
     }
 
+    public void saveQueue(LinkedHashMap<String, String> albumQueue){
+        try{
+            FileOutputStream fos = this.openFileOutput("waiting.bin", Context.MODE_PRIVATE);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            /*FileOutputStream fos = this.openFileOutput("albums.bin", Context.MODE_PRIVATE);
+            ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(fos));*/
+            oos.writeObject(albumQueue);
+            oos.flush();
+            oos.close();
+            //Toast.makeText(HomeScreen.this, fos. , Toast.LENGTH_LONG).show();
+            //fos.close();
+        }catch(Exception e){
+
+        }
+    }
+
     public ArrayList<String> openDeleteRequests(){
         try{
             FileInputStream fis = this.openFileInput("deletes.bin");
@@ -385,6 +404,21 @@ MY_PERMISSIONS_REQUEST_CAMERA);
             return new ArrayList<String>();
         }
 
+    }
+    public void saveDeletes(ArrayList<String> deletes){
+        try{
+            FileOutputStream fos = this.openFileOutput("deletes.bin", Context.MODE_PRIVATE);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            /*FileOutputStream fos = this.openFileOutput("albums.bin", Context.MODE_PRIVATE);
+            ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(fos));*/
+            oos.writeObject(deletes);
+            oos.flush();
+            oos.close();
+            //Toast.makeText(HomeScreen.this, fos. , Toast.LENGTH_LONG).show();
+            //fos.close();
+        }catch(Exception e){
+
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -431,6 +465,20 @@ MY_PERMISSIONS_REQUEST_CAMERA);
                                 add.dismiss();
                             }
                     );
+                    Button removeButton = (Button) add.findViewById(R.id.deleteLoc);
+                    removeButton.setOnClickListener(e -> {
+                                //File f = new File(selected);
+                                ArrayList<Picture> pics = u.getPics(album_name);
+                                for (int i = 0; i < pics.size(); i++) {
+                                    Picture p = pics.get(i);
+                                    if (p.getPath().equals(selected)) {
+                                        u.getPics(album_name).get(i).setLocation("");
+                                    }
+                                }
+                                saveUserAlbum(u);
+                                add.dismiss();
+                            }
+                    );
                 }
                 /*if(selected != null) {
                     ArrayList<Picture> pics = u.getPics(album_name);
@@ -470,6 +518,20 @@ MY_PERMISSIONS_REQUEST_CAMERA);
 
                     Button cancelButton = (Button) addperson.findViewById(R.id.cancelPerson);
                     cancelButton.setOnClickListener(e -> {
+                                addperson.dismiss();
+                            }
+                    );
+                    Button removeButton = (Button) addperson.findViewById(R.id.deletePerson);
+                    removeButton.setOnClickListener(e -> {
+                        //File f = new File(selected);
+                        ArrayList<Picture> pics = u.getPics(album_name);
+                        for (int i = 0; i < pics.size(); i++) {
+                            Picture p = pics.get(i);
+                            if (p.getPath().equals(selected)) {
+                                u.getPics(album_name).get(i).setPerson("");
+                            }
+                        }
+                        saveUserAlbum(u);
                                 addperson.dismiss();
                             }
                     );
@@ -516,9 +578,104 @@ MY_PERMISSIONS_REQUEST_CAMERA);
                 if(selected != null) {
                     u.deletePic(album_name, selected);
                     //myImgAdapter = new ImageAdapter(this);
+                    paths = u.getPaths(album_name);
+                    myImgAdapter.notifyDataSetChanged();
                     grid.setAdapter(myImgAdapter);
                     saveUserAlbum(u);
                 }
+                return true;
+            case R.id.viewTag:
+                if(selected != null){
+                    ArrayList<Picture> pics = u.getPics(album_name);
+                    String s = "Location: ";
+                    for(int i = 0;i < pics.size();i++){
+                        if(pics.get(i).getPath().equals(selected) && pics.get(i).getLocation() != null)
+                            s += pics.get(i).getLocation() + " ";
+
+                        if(pics.get(i).getPath().equals(selected) && pics.get(i).getPerson() != null) {
+                            s += "Person: " + pics.get(i).getPerson();
+                        }
+                    }
+                    Toast.makeText(InsideAlbumScreen.this, s, Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(InsideAlbumScreen.this, "no selection", Toast.LENGTH_LONG).show();
+                }
+                return true;
+            case R.id.searchfor:
+                final Dialog search = new Dialog(InsideAlbumScreen.this);
+                search.setContentView(R.layout.search);
+                search.setTitle("Search album");
+                search.setCancelable(true);
+                search.show();
+                //TextView oldAlbum = (TextView)search.findViewById(R.id.disp) ;
+                //oldAlbum.setText("Old Album Name: " + selected);
+                Button confirmButton = (Button)search.findViewById(R.id.confirmSearch);
+                //Button cancelling = (Button)search.findViewById(R.id.cancelsearch);
+                confirmButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View arg0) {
+                        String name = ((EditText)search.findViewById(R.id.personName)).getText().toString().trim().toUpperCase();
+                        String location = ((EditText)search.findViewById(R.id.location)).getText().toString().trim().toUpperCase();
+                        //String name = p.getText().toString();
+                        //Toast.makeText(HomeScreen.this, name, Toast.LENGTH_LONG);
+
+                        //String location = locSearch.getText().toString();
+                        if (!(name.equals("Enter Name to Search")))     //searching by name
+                        {
+                            // Toast.makeText(HomeScreen.this, "Name", Toast.LENGTH_LONG).;
+                            String[] albums = u.getAlbums();
+
+                            for (int i = 0; i< albums.length;i++)
+                            {
+                                ArrayList<Picture> pics = u.getPics(albums[i]);
+                                for (int j = 0; j<pics.size();j++)
+                                {
+                                    if (pics.get(j).getPerson() != null && pics.get(j).getPerson().toLowerCase().contains(name.toLowerCase()))
+                                    {
+                                        searchPhotos.add(pics.get(j).getPath());
+                                    }
+                                }
+                            }
+                            //Intent intent = new Intent(this, SearchResults.class);
+                            Intent intent = new Intent(getApplicationContext(), SearchResults.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putStringArrayList("search_results", searchPhotos);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                        }
+                        if (!(location.equals("Enter Location to Search"))) //searching by location
+                        {
+                            //Toast.makeText(HomeScreen.this, "Location", Toast.LENGTH_LONG);
+                            String[] albums = u.getAlbums();
+                            for (int i = 0; i< albums.length;i++)
+                            {
+                                ArrayList<Picture> pics = u.getPics(albums[i]);
+                                for (int j = 0; j<pics.size();j++)
+                                {
+                                    if (pics.get(j).getLocation() != null && pics.get(j).getLocation().toLowerCase().contains(location.toLowerCase()))
+                                    {
+                                        searchPhotos.add(pics.get(j).getPath());
+                                    }
+                                }
+                            }
+                            Intent intent = new Intent(getApplicationContext(), SearchResults.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putStringArrayList("search_results", searchPhotos);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                        }else {
+                            Toast.makeText(InsideAlbumScreen.this, "Invalid search constraints!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+                Button cancelBtn = (Button)search.findViewById(R.id.cancelSearch);
+                cancelBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View arg0) {
+
+                        search.dismiss();
+                    }
+                });
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
