@@ -13,31 +13,6 @@
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete"
-        tools:layout_editor_absoluteX="280dp"
-        tools:layout_editor_absoluteY="447dp"
-        android:layout_marginRight="26dp"
-        android:layout_marginEnd="16dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="5dp" />
-
-        <Button
-        android:id="@+id/button10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rename Album"
-            android:layout_marginRight="16dp"
-            android:layout_marginEnd="115dp"
-            android:layout_marginBottom="5dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
         <Button
             android:id="@+id/button12"
             android:layout_width="wrap_content"
@@ -49,29 +24,6 @@
             tools:layout_editor_absoluteY="72dp"
             tools:layout_editor_absoluteX="160dp" />
 
-
-        <Button
-            android:id="@+id/button11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Create Album"
-            android:layout_marginBottom="5dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="436dp" />
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Enter Album Name"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="55dp"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="393dp" />
 
     <ListView
     android:id="@+id/albumList"

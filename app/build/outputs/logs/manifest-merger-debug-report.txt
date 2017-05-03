@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:2:1-27:12
+ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:2:1-28:12
 	package
 		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:3:5-53
 		INJECTED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml
@@ -22,7 +22,7 @@ ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\
 	android:name
 		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:5:22-77
 application
-ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:6:5-25:19
+ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:6:5-26:19
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Nishanth\.android\build-cache\c9ec2b0ab805514e0bd6689770105cf74333b920\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-v4:25.3.1] C:\Users\Nishanth\.android\build-cache\5906df12934381d2074bf963b0b7e467715378e3\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\Nishanth\.android\build-cache\c4a6abec3736b75c9751d2c48c1cdbfcabde95f5\output\AndroidManifest.xml:29:5-20
@@ -67,6 +67,10 @@ activity#com.example.pkanukollu.androidphotos05.PhotoDisplay
 ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:23:9-59
 	android:name
 		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:23:19-47
+activity#com.example.pkanukollu.androidphotos05.SearchResults
+ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:24:9-60
+	android:name
+		ADDED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml:24:19-48
 uses-sdk
 INJECTED from C:\Users\Nishanth\AndroidStudioProjects\androidphotos05\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Nishanth\.android\build-cache\c9ec2b0ab805514e0bd6689770105cf74333b920\output\AndroidManifest.xml:21:5-23:78

@@ -20,6 +20,8 @@ public class Picture implements Serializable {
     private String path;
     private String caption;
     private String name;
+    private String location;
+    private String person;
     int month;
     int date;
     int year;
@@ -68,6 +70,43 @@ public class Picture implements Serializable {
         //else{
         return path;
         //}
+    }
+
+    /**
+     * Sets location
+     * @param location
+     */
+    public void setLocation(String location)
+    {
+        this.location = location;
+    }
+
+    /**
+     * gets location
+     * @param location
+     */
+    public String getLocation()
+    {
+        return this.location;
+    }
+
+    /**
+     * Sets person
+     * @param person
+     */
+    public void setPerson(String person)
+    {
+        this.person = person;
+    }
+
+    /**
+     * Gets person
+     * @param person
+     * @return returns person
+     */
+    public String getPerson()
+    {
+        return this.person;
     }
     /**
      * This method returns the path of the picture.

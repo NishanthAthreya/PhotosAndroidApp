@@ -13,4 +13,8 @@
         android:icon="@drawable/ic_action_plus_white"
         android:title="add"
         appcompat:showAsAction="always" />
+    <item android:id="@+id/search"
+        android:icon="@drawable/ic_action_name"
+        android:title="search"
+        appcompat:showAsAction="always" />
 </menu>

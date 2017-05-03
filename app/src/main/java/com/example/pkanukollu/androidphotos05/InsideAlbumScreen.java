@@ -393,6 +393,81 @@ MY_PERMISSIONS_REQUEST_CAMERA);
                 startActivityForResult(pickPhoto,1);
                 //startActivityForResult(pickPhoto, 0);
                 return true;
+            case R.id.addloc:
+                if(selected != null) {
+                    final Dialog add = new Dialog(InsideAlbumScreen.this);
+                    add.setContentView(R.layout.addloc);
+                    add.setTitle("Add location");
+                    add.setCancelable(true);
+                    add.show();
+
+                    Button saveButton = (Button) add.findViewById(R.id.confirmLoc);
+                    saveButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View arg0) {
+                            String loc = ((EditText) add.findViewById(R.id.loc)).getText().toString().trim();
+                            //File f = new File(selected);
+                            ArrayList<Picture> pics = u.getPics(album_name);
+                            for (int i = 0; i < pics.size(); i++) {
+                                Picture p = pics.get(i);
+                                if (p.getPath().equals(selected)) {
+                                    p.setLocation(loc);
+                                }
+                            }
+                            saveUserAlbum(u);
+                            add.dismiss();
+                        }
+                    });
+
+                    Button cancelButton = (Button) add.findViewById(R.id.cancelLoc);
+                    cancelButton.setOnClickListener(e -> {
+                                add.dismiss();
+                            }
+                    );
+                }
+                /*if(selected != null) {
+                    ArrayList<Picture> pics = u.getPics(album_name);
+                    for (int i = 0; i < pics.size(); i++) {
+                        Picture p = pics.get(i);
+                        if (p.getPath().equals(selected)) {
+                            p.setLocation();
+                        }
+                    }
+                }*/
+                return true;
+            case R.id.addperson:
+                if(selected != null) {
+                    final Dialog addperson = new Dialog(InsideAlbumScreen.this);
+                    addperson.setContentView(R.layout.addtag);
+                    addperson.setTitle("Add location");
+                    addperson.setCancelable(true);
+                    addperson.show();
+
+                    Button saveButton = (Button) addperson.findViewById(R.id.confirmPerson);
+                    saveButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View arg0) {
+                            String person = ((EditText) addperson.findViewById(R.id.loc)).getText().toString().trim();
+                            //File f = new File(selected);
+                            ArrayList<Picture> pics = u.getPics(album_name);
+                            for (int i = 0; i < pics.size(); i++) {
+                                Picture p = pics.get(i);
+                                if (p.getPath().equals(selected)) {
+                                    p.setPerson(person);
+                                }
+                            }
+                            saveUserAlbum(u);
+                            addperson.dismiss();
+                        }
+                    });
+
+                    Button cancelButton = (Button) addperson.findViewById(R.id.cancelPerson);
+                    cancelButton.setOnClickListener(e -> {
+                                addperson.dismiss();
+                            }
+                    );
+                }
+                return true;
             case R.id.play:
                 Intent intent = new Intent(getApplicationContext(),PhotoDisplay.class);
                 Bundle bundle = new Bundle();
@@ -414,10 +489,21 @@ MY_PERMISSIONS_REQUEST_CAMERA);
                     public void onClick(View arg0) {
                         String album = ((EditText)dialog.findViewById(R.id.albumTo)).getText().toString().trim().toUpperCase();
                         //File f = new File(selected);
-                        u.addPic(album,selected, "");
-                        u.deletePic(album_name,selected);
+                        if(u.getAlbumMap().containsKey(album)){
+                            u.addPic(album,selected, "");
+                            u.deletePic(album_name,selected);
+                            saveUserAlbum(u);
+                            dialog.dismiss();
+                        }
                     }
                 });
+
+                Button cancelButton = (Button) dialog.findViewById(R.id.cancel_move);
+                cancelButton.setOnClickListener(e->{
+                    dialog.dismiss();
+                        }
+                );
+
                 return true;
             case R.id.delete:
                 if(selected != null) {

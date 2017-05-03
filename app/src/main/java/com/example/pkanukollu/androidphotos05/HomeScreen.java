@@ -34,11 +34,13 @@ import java.util.LinkedHashMap;
 import java.util.Queue;
 
 public class HomeScreen extends AppCompatActivity {
-    Button create;
-    Button delete;
+    //Button create;
+    //Button delete;
     Button view;
     EditText albumname;
+    ArrayList<String> searchPhotos = new ArrayList<String>();
     ListView albumsList;
+    private UserAlbum u;
     ArrayList<String> useralbums;
     LinkedHashMap<String, String> renameRequests;
     ArrayList<String> deleteRequests;
@@ -52,14 +54,15 @@ public class HomeScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-        albumname = (EditText) findViewById(R.id.editText);
-        create = (Button)findViewById(R.id.button11);
-        delete = (Button)findViewById(R.id.button9);
+        //albumname = (EditText) findViewById(R.id.editText);
+        //create = (Button)findViewById(R.id.button11);
+        //delete = (Button)findViewById(R.id.button9);
         view = (Button)findViewById(R.id.button12);
         albumsList = (ListView)findViewById(R.id.albumList);
         renameRequests = openRequests();
        // useralbums = new ArrayList<String>();
         useralbums = openAlbums();
+        u = openUserAlbum();
         //useralbums.add("thing");
         //u = openUserAlbum();
         String s[] = {"thing1", "thing2"};
@@ -73,38 +76,38 @@ public class HomeScreen extends AppCompatActivity {
        // Toast toast = Toast.makeText(this,"clicked create",Toast.LENGTH_SHORT);
         //toast.show();
         //System.out.println("created");
-        create.setOnClickListener(e -> {
+        /*create.setOnClickListener(e -> {
 
             String album = albumname.getText().toString();
             //albums.add(album);
             if(!useralbums.contains(album)){
                 //u.addAlbum(album);
                 useralbums.add(album);
-                saveAlbums(useralbums);
+                saveAlbums(useralbums);*/
                 //adapter = new ArrayAdapter<String>(this,R.layout.albums, albums.toArray(new String[albums.size()]));
                 /*ArrayAdapter<String> adapter =
                         new ArrayAdapter<String>(this,
                                 R.layout.activity_home_screen,
                                 u.getAlbums());*/
                 //String s[] = {"thing1", "thing2"};
-                String[] al = useralbums.toArray(new String[useralbums.size()]);
+               /* String[] al = useralbums.toArray(new String[useralbums.size()]);
                 adapter = new ArrayAdapter<String>(this,R.layout.albums, al);
                 albumsList.setAdapter(adapter);
             }else{
                 Toast.makeText(HomeScreen.this, "Album already exists!", Toast.LENGTH_SHORT).show();
             }
-        } );
+        } );*/
 
-        delete.setOnClickListener(e -> {
-            String album = albumname.getText().toString();
+       /* delete.setOnClickListener(e -> {
+            String album = albumname.getText().toString();*/
             //albums.remove(album);
             //u.deleteAlbum(album);
-            useralbums.remove(album);
+            /*useralbums.remove(album);
             saveAlbums(useralbums);
             String[] al = useralbums.toArray(new String[useralbums.size()]);
             adapter = new ArrayAdapter<String>(this,R.layout.albums, al);
             albumsList.setAdapter(adapter);
-        });
+        });*/
         albumsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {       //getting selected album
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -295,7 +298,7 @@ public class HomeScreen extends AppCompatActivity {
                 String[] al = useralbums.toArray(new String[useralbums.size()]);
                 adapter = new ArrayAdapter<String>(this,R.layout.albums, al);
                 albumsList.setAdapter(adapter);
-                deleteRequests.add(selected);
+                //deleteRequests.add(selected);
                 return true;
             case R.id.editAlbum:
                 if (selected != null) {
@@ -336,8 +339,102 @@ public class HomeScreen extends AppCompatActivity {
                     });
                 }
                 return true;
+
+            case R.id.search:
+                final Dialog search = new Dialog(HomeScreen.this);
+                search.setContentView(R.layout.search);
+                search.setTitle("Rename album");
+                search.setCancelable(true);
+                search.show();
+                //TextView oldAlbum = (TextView)search.findViewById(R.id.disp) ;
+                //oldAlbum.setText("Old Album Name: " + selected);
+                Button confirmButton = (Button)search.findViewById(R.id.confirmSearch);
+                confirmButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View arg0) {
+                        String name = ((EditText)search.findViewById(R.id.personName)).getText().toString().trim().toUpperCase();
+                        String location = ((EditText)search.findViewById(R.id.personName)).getText().toString().trim().toUpperCase();
+                        //String name = p.getText().toString();
+                        //Toast.makeText(HomeScreen.this, name, Toast.LENGTH_LONG);
+
+                        //String location = locSearch.getText().toString();
+                        if (!(name.equals("Enter Name to Search")))     //searching by name
+                        {
+                            // Toast.makeText(HomeScreen.this, "Name", Toast.LENGTH_LONG).;
+                            String[] albums = u.getAlbums();
+
+                            for (int i = 0; i< albums.length;i++)
+                            {
+                                ArrayList<Picture> pics = u.getPics(albums[i]);
+                                for (int j = 0; j<pics.size();j++)
+                                {
+                                    if (pics.get(i).getPerson().contains(name))
+                                    {
+                                        searchPhotos.add(pics.get(i).getPath());
+                                    }
+                                }
+                            }
+                            //Intent intent = new Intent(this, SearchResults.class);
+                            Intent intent = new Intent(getApplicationContext(), SearchResults.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putStringArrayList("search_results", searchPhotos);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                        }
+                        else if (!(location.equals("Enter Location to Search"))) //searching by location
+                        {
+                            //Toast.makeText(HomeScreen.this, "Location", Toast.LENGTH_LONG);
+                            String[] albums = u.getAlbums();
+                            for (int i = 0; i< albums.length;i++)
+                            {
+                                ArrayList<Picture> pics = u.getPics(albums[i]);
+                                for (int j = 0; j<pics.size();j++)
+                                {
+                                    if (pics.get(i).getLocation().contains(location))
+                                    {
+                                        searchPhotos.add(pics.get(i).getPath());
+                                    }
+                                }
+                            }
+                            Intent intent = new Intent(getApplicationContext(), SearchResults.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putStringArrayList("search_results", searchPhotos);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                        }else {
+                            Toast.makeText(HomeScreen.this, "Invalid search constraints!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+                Button cancelBtn = (Button)search.findViewById(R.id.cancel);
+                cancelBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View arg0) {
+
+                        search.dismiss();
+                    }
+                });
+
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+    public UserAlbum openUserAlbum(){
+        try{
+            FileInputStream fis = this.openFileInput("savedalbums.bin");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            /*FileInputStream fis = this.openFileInput("thealbum.bin");
+            ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(fis));*/
+            Object o = ois.readObject();
+            //Toast.makeText(HomeScreen.this, "useralbum" + o.toString(), Toast.LENGTH_SHORT).show();
+            //ois.close();
+            //fis.close();
+            return (UserAlbum)o;
+
+        }catch(Exception e) {
+            Toast.makeText(HomeScreen.this, "useralbum" , Toast.LENGTH_SHORT).show();
+            return new UserAlbum();
+        }
+
     }
 }

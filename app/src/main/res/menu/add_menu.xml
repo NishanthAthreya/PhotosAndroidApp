@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:appcompat="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/addloc"
+        android:icon="@drawable/ic_action_addloc"
+        android:title="loc"
+        appcompat:showAsAction="always" />
+    <item android:id="@+id/addperson"
+        android:icon="@drawable/ic_action_addperson"
+        android:title="person"
+        appcompat:showAsAction="always" />
     <item android:id="@+id/play"
         android:icon="@drawable/ic_play"
         android:title="play"

@@ -20,6 +20,7 @@ public class PhotoDisplay extends AppCompatActivity {
     int index;
     Button next;
     Button previous;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +30,11 @@ public class PhotoDisplay extends AppCompatActivity {
         paths = b.getStringArrayList("paths");
         index = paths.indexOf(pic);
         pic = b.getString("path");
-        ImageView imageView = (ImageView) findViewById(R.id.image);
+        imageView = (ImageView) findViewById(R.id.image);
         Bitmap myBitmap = BitmapFactory.decodeFile(pic);
         imageView.setImageBitmap(myBitmap);
-        next = (Button) findViewById(R.id.button2);
-        previous = (Button) findViewById(R.id.button);
+        //next = (Button) findViewById(R.id.button2);
+        //previous = (Button) findViewById(R.id.button);
         /*next.setOnClickListener(e -> {
             if (index == paths.size() - 1) {
                 index = 0;
@@ -74,10 +75,22 @@ public class PhotoDisplay extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.right:
-
+                index++;
+                if(index >= 0 && index < paths.size()) {
+                    Bitmap myBitmap = BitmapFactory.decodeFile(paths.get(index));
+                    imageView.setImageBitmap(myBitmap);
+                }else{
+                    index--;
+                }
                 return true;
             case R.id.left:
-
+                index--;
+                if(index >= 0 && index < paths.size()) {
+                    Bitmap myBitmap = BitmapFactory.decodeFile(paths.get(index));
+                    imageView.setImageBitmap(myBitmap);
+                }else{
+                    index++;
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
